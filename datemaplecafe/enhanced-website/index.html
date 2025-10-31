@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date & Maple Café - Premium Coffee & Pastries</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🍁 Date & Maple Café</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#reviews" class="nav-link">Reviews</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Date & Maple Café</h1>
+            <p>Experience the finest coffee and pastries in Wilmington, DE</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn primary">Order Now</a>
+                <a href="#about" class="btn secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/hero-coffee.jpg" alt="Fresh Coffee" onerror="this.src='https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'">
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            <p class="section-subtitle">Handcrafted with love, served with passion</p>
+            
+            <!-- Menu Categories -->
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn" data-category="traditional">Traditional Drinks</button>
+                <button class="category-btn" data-category="specialty">Specials</button>
+                <button class="category-btn" data-category="food">Food</button>
+            </div>
+
+            <!-- Traditional Drinks -->
+            <div class="menu-category" data-category="traditional">
+                <h3 class="category-title">Traditional Drinks - $5.50</h3>
+                <p class="category-description">16oz ICED Matcha or Espresso Latte</p>
+                <div class="menu-grid">
+                    <div class="menu-item" data-item="original-matcha">
+                        <div class="item-image">
+                            <img src="images/matcha.jpg" alt="Original Matcha" onerror="this.src='https://images.unsplash.com/photo-1515823064-d6e0c04616a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Original Matcha</h4>
+                            <p>Premium ceremonial grade matcha with your choice of milk</p>
+                            <div class="item-options">
+                                <label>Milk:
+                                    <select name="milk">
+                                        <option value="">Lactose Free Milk</option>
+                                        <option value="oat" data-price="0.50">Oat Milk (+$0.50)</option>
+                                    </select>
+                                </label>
+                                <label>Sweetener:
+                                    <select name="sweetener">
+                                        <option value="">None</option>
+                                        <option value="cane-sugar" data-price="1.00">Cane Sugar (+$1.00)</option>
+                                        <option value="vanilla" data-price="1.00">Vanilla (+$1.00)</option>
+                                        <option value="brown-sugar" data-price="1.00">Brown Sugar (+$1.00)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="item-footer">
+                                <span class="price">$5.50</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('original-matcha', 'Original Matcha', 5.50, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="original-latte">
+                        <div class="item-image">
+                            <img src="images/latte.jpg" alt="Original Latte" onerror="this.src='https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Original Latte</h4>
+                            <p>Double shot espresso with perfectly steamed milk</p>
+                            <div class="item-options">
+                                <label>Milk:
+                                    <select name="milk">
+                                        <option value="">Lactose Free Milk</option>
+                                        <option value="oat" data-price="0.50">Oat Milk (+$0.50)</option>
+                                    </select>
+                                </label>
+                                <label>Sweetener:
+                                    <select name="sweetener">
+                                        <option value="">None</option>
+                                        <option value="cane-sugar" data-price="1.00">Cane Sugar (+$1.00)</option>
+                                        <option value="vanilla" data-price="1.00">Vanilla (+$1.00)</option>
+                                        <option value="brown-sugar" data-price="1.00">Brown Sugar (+$1.00)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="item-footer">
+                                <span class="price">$5.50</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('original-latte', 'Original Latte', 5.50, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialty Drinks -->
+            <div class="menu-category" data-category="specialty">
+                <h3 class="category-title">Specials! - $7.00</h3>
+                <p class="category-description">Changes bi-weekly and seasonally!</p>
+                <div class="menu-grid">
+                    <div class="menu-item" data-item="horchata-matcha">
+                        <div class="item-image">
+                            <img src="images/horchata-matcha.jpg" alt="Horchata Matcha" onerror="this.src='https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Horchata Matcha</h4>
+                            <p>16oz ICED 4g Quality Matcha + Homemade nut free Horchata (Mexican Version). As is, dairy</p>
+                            <div class="item-options">
+                                <label>Add-ons:
+                                    <select name="addons">
+                                        <option value="">None</option>
+                                        <option value="cream-top" data-price="1.00">Cream Top (+$1.00)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="item-footer">
+                                <span class="price">$7.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('horchata-matcha', 'Horchata Matcha', 7.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="limeade-matcha">
+                        <div class="item-image">
+                            <img src="images/limeade-matcha.jpg" alt="Limeade Matcha">
+                        </div>
+                        <div class="item-content">
+                            <h4>Limeade Matcha</h4>
+                            <p>16oz ICED 4g Quality Matcha + Sweetened Condensed Coconut Milk, Fresh Lime Juice. As is, Vegan</p>
+                            <div class="item-options">
+                                <label>Add-ons:
+                                    <select name="addons">
+                                        <option value="">None</option>
+                                        <option value="cream-top" data-price="1.00">Cream Top (+$1.00)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="item-footer">
+                                <span class="price">$7.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('limeade-matcha', 'Limeade Matcha', 7.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="raspberry-matcha">
+                        <div class="item-image">
+                            <img src="images/raspberry-matcha.jpg" alt="Raspberry Matcha" onerror="this.src='https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Raspberry Matcha</h4>
+                            <p>16oz ICED 4g Quality Matcha + Raspberry Koso (a Japanese fermented fruit sauce) + Choice of Milk</p>
+                            <div class="item-options">
+                                <label>Milk:
+                                    <select name="milk">
+                                        <option value="">Lactose Free Milk</option>
+                                        <option value="oat" data-price="0.50">Oat Milk (+$0.50)</option>
+                                    </select>
+                                </label>
+                                <label>Add-ons:
+                                    <select name="addons">
+                                        <option value="">None</option>
+                                        <option value="cream-top" data-price="1.00">Cream Top (+$1.00)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="item-footer">
+                                <span class="price">$7.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('raspberry-matcha', 'Raspberry Matcha', 7.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="black-sesame-latte">
+                        <div class="item-image">
+                            <img src="images/black-sesame.jpg" alt="Black Sesame Latte" onerror="this.src='https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Black Sesame Latte</h4>
+                            <p>16oz ICED Double Shot Espresso Latte w/ Black Sesame Syrup and Choice of Milk</p>
+                            <div class="item-options">
+                                <label>Milk:
+                                    <select name="milk">
+                                        <option value="">Lactose Free Milk</option>
+                                        <option value="oat" data-price="0.50">Oat Milk (+$0.50)</option>
+                                    </select>
+                                </label>
+                                <label>Add-ons:
+                                    <select name="addons">
+                                        <option value="">None</option>
+                                        <option value="cream-top" data-price="1.00">Cream Top (+$1.00)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="item-footer">
+                                <span class="price">$7.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('black-sesame-latte', 'Black Sesame Latte', 7.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="spanish-latte">
+                        <div class="item-image">
+                            <img src="images/spanish-latte.jpg" alt="Spanish Latte" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Spanish Latte</h4>
+                            <p>16oz ICED Double Shot Espresso Latte w/ Sweetened Condensed Milk</p>
+                            <div class="item-options">
+                                <label>Version:
+                                    <select name="version">
+                                        <option value="">As is! - Condensed Milk, Lactose Free Milk</option>
+                                        <option value="vegan" data-price="1.00">Vegan - Coconut Condensed Milk, Oat Milk (+$1.00)</option>
+                                    </select>
+                                </label>
+                                <label>Add-ons:
+                                    <select name="addons">
+                                        <option value="">None</option>
+                                        <option value="cream-top" data-price="1.00">Cream Top (+$1.00)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="item-footer">
+                                <span class="price">$7.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('spanish-latte', 'Spanish Latte', 7.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Food Items -->
+            <div class="menu-category" data-category="food">
+                <h3 class="category-title">The Food!</h3>
+                <p class="category-description">All items made with intention and full of flavor!</p>
+                <div class="menu-grid">
+                    <div class="menu-item" data-item="strawberry-muffin">
+                        <div class="item-image">
+                            <img src="images/strawberry-muffin.jpg" alt="Strawberries & Cream Muffin" onerror="this.src='https://images.unsplash.com/photo-1607958996333-41aef7caefaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Strawberries & Cream Muffin</h4>
+                            <p>Fresh strawberries with creamy filling in a fluffy muffin</p>
+                            <div class="item-footer">
+                                <span class="price">$5.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('strawberry-muffin', 'Strawberries & Cream Muffin', 5.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="guava-muffin">
+                        <div class="item-image">
+                            <img src="images/guava-muffin.jpg" alt="Guava & Cheese Muffin" onerror="this.src='https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Guava & Cheese Muffin</h4>
+                            <p>Tropical guava paired with cream cheese in a soft muffin</p>
+                            <div class="item-footer">
+                                <span class="price">$5.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('guava-muffin', 'Guava & Cheese Muffin', 5.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="cinnamon-roll">
+                        <div class="item-image">
+                            <img src="images/cinnamon-roll.jpg" alt="Fluffy Vanilla Bean Cinnamon Roll" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Fluffy Vanilla Bean Cinnamon Roll</h4>
+                            <p>Ready 11:30AM: Warm fluffy cinnamon roll with vanilla bean glaze</p>
+                            <div class="item-footer">
+                                <span class="price">$6.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('cinnamon-roll', 'Fluffy Vanilla Bean Cinnamon Roll', 6.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="bread-pudding">
+                        <div class="item-image">
+                            <img src="images/bread-pudding.jpg" alt="Warm Bread Pudding" onerror="this.src='https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Warm Bread Pudding</h4>
+                            <p>Rich and comforting bread pudding served warm</p>
+                            <div class="item-footer">
+                                <span class="price">$7.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('bread-pudding', 'Warm Bread Pudding', 7.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="veggie-frittata">
+                        <div class="item-image">
+                            <img src="images/frittata.jpg" alt="Veggie Frittata" onerror="this.src='https://images.unsplash.com/photo-1506084868230-bb9d95c24759?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>Veggie Frittata</h4>
+                            <p>Organic eggs + Cream + Spinach + Sundried Tomatoes, Scallion + Onion + Gruyère cheese + Mushroom. W/ Side Salad</p>
+                            <div class="item-options">
+                                <label>Add-ons:
+                                    <select name="addons">
+                                        <option value="">W/ Side Salad</option>
+                                        <option value="side-bacon" data-price="3.00">W/ Side Bacon (+$3.00)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="item-footer">
+                                <span class="price">$9.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('veggie-frittata', 'Veggie Frittata', 9.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-item="bec-sandwich">
+                        <div class="item-image">
+                            <img src="images/bec-sandwich.jpg" alt="B.E.C Sandwich" onerror="this.src='https://images.unsplash.com/photo-1539252554453-80ab65ce3586?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                        <div class="item-content">
+                            <h4>B.E.C</h4>
+                            <p>Bacon, egg and cheese on an Italian roll</p>
+                            <div class="item-options">
+                                <label>Roll Type:
+                                    <select name="roll-type">
+                                        <option value="">White Italian Roll</option>
+                                        <option value="sesame">Sesame Italian Roll *Recommended</option>
+                                    </select>
+                                </label>
+                                <label>Style:
+                                    <select name="style">
+                                        <option value="">Regular</option>
+                                        <option value="ms-z-way">Ms.Z Way! w/ grape jelly spread</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="item-footer">
+                                <span class="price">$7.00</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('bec-sandwich', 'B.E.C', 7.00, this)">
+                                    <i class="fas fa-plus"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="pickup-time-selection">
+                <label for="pickupTime">Pick Up Time Frame!</label>
+                <p class="pickup-info">10AM - 2PM ONLY - WILMINGTON, DE.<br>
+                *Failure to arrive at your preselected pick up time may result in extra wait time*</p>
+                <select id="pickupTime" required>
+                    <option value="">Select pickup time</option>
+                    <option value="11:45AM">11:45AM</option>
+                    <option value="12PM">12PM</option>
+                    <option value="12:15PM">12:15PM</option>
+                    <option value="12:30PM">12:30PM</option>
+                    <option value="12:45PM">12:45PM</option>
+                    <option value="1PM">1PM</option>
+                    <option value="1:15PM">1:15PM</option>
+                    <option value="1:30PM">1:30PM</option>
+                    <option value="1:45PM">1:45PM</option>
+                    <option value="2PM">2PM</option>
+                </select>
+            </div>
+            <div class="cart-total">
+                <div class="total-line">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="total-line">
+                    <span>Tax (8.75%):</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="total-line total">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()" disabled>
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Date & Maple Café</h2>
+                    <p>Located in the heart of Wilmington, Delaware, Date & Maple Café is your neighborhood destination for exceptional coffee and handcrafted pastries. We're passionate about creating unique flavor combinations that celebrate both traditional and innovative brewing methods.</p>
+                    <p>Our popup café offers a curated selection of premium drinks and fresh food items, perfect for your morning pickup or afternoon treat. Every item is made with love and the finest ingredients.</p>
+                    <div class="cafe-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Wilmington, DE</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Sunday, September 14th • 10 AM - 2 PM</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-car"></i>
+                            <span>Curbside Pickup Available</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/cafe-interior.jpg" alt="Café Interior" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hello@datemaplecafe.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(302) 555-CAFE</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Wilmington, Delaware</span>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <h3>Send us a Message</h3>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="reviews-content">
+                <div class="review-form">
+                    <h3>Leave a Review</h3>
+                    <form id="reviewForm">
+                        <div class="form-group">
+                            <input type="text" name="reviewerName" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="rating-input">
+                                <label>Rating:</label>
+                                <div class="stars">
+                                    <i class="fas fa-star" data-rating="1"></i>
+                                    <i class="fas fa-star" data-rating="2"></i>
+                                    <i class="fas fa-star" data-rating="3"></i>
+                                    <i class="fas fa-star" data-rating="4"></i>
+                                    <i class="fas fa-star" data-rating="5"></i>
+                                </div>
+                                <input type="hidden" name="rating" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="reviewText" placeholder="Share your experience..." rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Submit Review</button>
+                    </form>
+                </div>
+                <div class="reviews-display" id="reviewsDisplay">
+                    <!-- Reviews will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Checkout</h3>
+                <span class="close" onclick="closeCheckoutModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="checkout-section">
+                        <h4>Contact Information</h4>
+                        <div class="form-group">
+                            <input type="text" name="firstName" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="lastName" placeholder="Last Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-section">
+                        <h4>Order Summary</h4>
+                        <div id="checkoutOrderSummary"></div>
+                    </div>
+                    
+                    <div class="checkout-section">
+                        <h4>Payment Information</h4>
+
+                        <!-- Express Payment Methods -->
+                        <div class="express-payment-section">
+                            <h5>Express Payment</h5>
+                            <div class="express-payment-buttons">
+                                <div id="apple-pay-button" class="express-pay-btn apple-pay-btn" style="display: none;">
+                                    <i class="fab fa-apple"></i>
+                                    Pay with Apple Pay
+                                </div>
+                                <div id="google-pay-button" class="express-pay-btn google-pay-btn" style="display: none;">
+                                    <i class="fab fa-google"></i>
+                                    Pay with Google Pay
+                                </div>
+                            </div>
+                            <div class="payment-divider">
+                                <span>or</span>
+                            </div>
+                        </div>
+
+                        <!-- Traditional Payment Methods -->
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="card" checked>
+                                <div class="payment-option-content">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Credit/Debit Card</span>
+                                    <div class="card-icons">
+                                        <i class="fab fa-cc-visa"></i>
+                                        <i class="fab fa-cc-mastercard"></i>
+                                        <i class="fab fa-cc-amex"></i>
+                                        <i class="fab fa-cc-discover"></i>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="cash">
+                                <div class="payment-option-content">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>Cash (Pay on pickup)</span>
+                                    <small>Pay when you collect your order</small>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div id="cardPaymentSection" class="card-payment-section">
+                            <!-- Stripe Elements (preferred method) -->
+                            <div id="stripe-card-section" style="display: none;">
+                                <div id="card-element" class="card-element">
+                                    <!-- Stripe Elements will be inserted here -->
+                                </div>
+                                <div id="card-errors" class="card-errors" role="alert"></div>
+                            </div>
+
+                            <!-- Fallback Card Form (if Stripe not available) -->
+                            <div id="fallback-card-form" class="fallback-card-form">
+                                <div class="card-input-group">
+                                    <label for="cardNumber">Card Number</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                                </div>
+
+                                <div class="card-input-row">
+                                    <div class="card-input-group">
+                                        <label for="expiryDate">Expiry Date</label>
+                                        <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                                    </div>
+                                    <div class="card-input-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4" required>
+                                    </div>
+                                </div>
+
+                                <div class="card-input-group">
+                                    <label for="cardName">Cardholder Name</label>
+                                    <input type="text" id="cardName" name="cardName" placeholder="John Doe" required>
+                                </div>
+
+                                <div class="card-security-info">
+                                    <i class="fas fa-lock"></i>
+                                    <small>Your payment information is secure and encrypted</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-section">
+                        <h4>Special Instructions</h4>
+                        <textarea name="specialInstructions" placeholder="Any special requests or modifications..." rows="3"></textarea>
+                    </div>
+                    
+                    <div class="checkout-total">
+                        <div class="total-line">
+                            <span>Total:</span>
+                            <span id="checkoutTotal">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn primary checkout-submit-btn">
+                        Place Order
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍁 Date & Maple Café</h3>
+                    <p>Premium coffee and pastries in Wilmington, DE</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>hello@datemaplecafe.com</p>
+                    <p>(302) 555-CAFE</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Date & Maple Café. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/payment.js"></script>
+    <script src="js/enhanced-payment.js"></script>
+</body>
+</html>

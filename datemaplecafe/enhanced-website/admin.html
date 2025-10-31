@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Date & Maple Café</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🍁 Date & Maple Café</h2>
+                <span class="admin-badge">Admin Dashboard</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">
+                    <i class="fas fa-home"></i> Main Website
+                </a></li>
+                <li><a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a></li>
+                <li><a href="#staff" class="nav-link" onclick="showSection('staff')">
+                    <i class="fas fa-users"></i> Staff
+                </a></li>
+                <li>
+                    <div class="user-info" id="userInfo" style="display: none;">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="welcomeText">Welcome, Admin</span>
+                        <button onclick="logout()" class="btn secondary" style="margin-left: 1rem; padding: 0.5rem 1rem;">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                    <button id="loginBtn" onclick="showSection('login')" class="btn primary" style="padding: 0.5rem 1rem;">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section id="login" class="admin-section active">
+        <div class="login-container">
+            <div class="login-card fade-in">
+                <div class="login-logo">
+                    🍁 Date & Maple Café
+                </div>
+                <p class="login-subtitle">Admin Dashboard Login</p>
+
+                <div id="loginError" class="error-message" style="display: none;"></div>
+
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required placeholder="Enter your username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </div>
+
+                    <button type="submit" class="btn primary" id="loginSubmitBtn" style="width: 100%; margin-top: 1rem;">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </form>
+
+                <div class="default-credentials">
+                    <strong>Default Credentials:</strong><br>
+                    Username: admin<br>
+                    Password: admin123
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="admin-section">
+        <div class="main-content">
+            <div class="container">
+                <div class="fade-in">
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">Welcome to the Date & Maple Café Staff Management System</p>
+
+                    <!-- Statistics Cards -->
+                    <div class="stats-grid" id="statsGrid">
+                        <div class="stat-card">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <div class="stat-number">Loading...</div>
+                            <div class="stat-label">Loading Statistics</div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Quick Actions</h2>
+                        </div>
+
+                        <div class="quick-actions">
+                            <a href="/staff" class="action-card" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <div class="action-title">Manage Staff</div>
+                                    <div class="action-subtitle">Add, edit, delete staff members</div>
+                                </div>
+                            </a>
+
+                            <a href="/staff" class="action-card" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-user-plus"></i>
+                                <div>
+                                    <div class="action-title">Staff Management</div>
+                                    <div class="action-subtitle">Complete staff management system</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- System Information -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">System Information</h2>
+                        </div>
+
+                        <div class="system-info">
+                            <div class="info-item">
+                                <i class="fas fa-info-circle"></i>
+                                <div>
+                                    <strong>Staff ID Format:</strong> Role prefix + 3-digit counter
+                                    <ul>
+                                        <li>Manager: MA001, MA002, etc.</li>
+                                        <li>Barista: BA001, BA002, etc.</li>
+                                        <li>Cashier: CA001, CA002, etc.</li>
+                                        <li>Baker: BK001, BK002, etc.</li>
+                                        <li>Cleaner: CL001, CL002, etc.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <strong>Security:</strong> All staff data is encrypted and securely stored.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section id="staff" class="admin-section">
+        <div class="main-content">
+            <div class="container">
+                <div class="fade-in">
+                    <h1 class="page-title">Staff Management</h1>
+
+                    <!-- Messages -->
+                    <div id="staffError" class="message error-message" style="display: none;"></div>
+                    <div id="staffSuccess" class="message success-message" style="display: none;"></div>
+
+                    <!-- Controls -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Staff Members (<span id="staffCount">0</span>)</h2>
+                            <button id="toggleFormButton" onclick="toggleStaffForm()" class="btn primary">
+                                <i class="fas fa-user-plus"></i> <span id="toggleButtonText">Add Staff</span>
+                            </button>
+                        </div>
+
+                        <!-- Add Staff Form (Hidden by default) -->
+                        <div id="addStaffForm" style="display: none; padding: 20px; background: #f8f9fa; border-top: 1px solid #dee2e6;">
+                            <h4><i class="fas fa-plus"></i> Add New Staff Member</h4>
+
+                            <form id="staffForm" onsubmit="handleStaffFormSubmit(event)">
+                                <div id="formError" style="display: none; color: #dc3545; margin-bottom: 15px; padding: 10px; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px;"></div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                    <div>
+                                        <label for="staffRole" style="display: block; margin-bottom: 5px; font-weight: 600;">Role *</label>
+                                        <select id="staffRole" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                            <option value="">Select a role</option>
+                                            <option value="Manager">Manager</option>
+                                            <option value="Barista">Barista</option>
+                                            <option value="Cashier">Cashier</option>
+                                            <option value="Baker">Baker</option>
+                                            <option value="Cleaner">Cleaner</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="staffFirstName" style="display: block; margin-bottom: 5px; font-weight: 600;">First Name *</label>
+                                        <input type="text" id="staffFirstName" required placeholder="Enter first name" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                    <div>
+                                        <label for="staffLastName" style="display: block; margin-bottom: 5px; font-weight: 600;">Last Name *</label>
+                                        <input type="text" id="staffLastName" required placeholder="Enter last name" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                    </div>
+                                    <div>
+                                        <label for="staffEmail" style="display: block; margin-bottom: 5px; font-weight: 600;">Email *</label>
+                                        <input type="email" id="staffEmail" required placeholder="Enter email" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 15px;">
+                                    <label for="staffPhone" style="display: block; margin-bottom: 5px; font-weight: 600;">Phone *</label>
+                                    <input type="tel" id="staffPhone" required placeholder="Enter phone number" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                    <div>
+                                        <label for="staffPassword" style="display: block; margin-bottom: 5px; font-weight: 600;">Password *</label>
+                                        <input type="password" id="staffPassword" required placeholder="Enter password" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                        <small style="color: #666; font-size: 0.9rem;">Min 6 characters</small>
+                                    </div>
+                                    <div>
+                                        <label for="staffPasswordConfirm" style="display: block; margin-bottom: 5px; font-weight: 600;">Confirm Password *</label>
+                                        <input type="password" id="staffPasswordConfirm" required placeholder="Confirm password" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; gap: 10px;">
+                                    <button type="submit" id="staffSubmitBtn" class="btn primary">
+                                        <i class="fas fa-save"></i> Save Staff
+                                    </button>
+                                    <button type="button" onclick="toggleStaffForm()" class="btn secondary">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        </div>
+
+                        <!-- Filters -->
+                        <div class="filters-row">
+                            <div class="form-group">
+                                <label for="roleFilter">Filter by Role</label>
+                                <select id="roleFilter" onchange="filterStaff()">
+                                    <option value="">All Roles</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Barista">Barista</option>
+                                    <option value="Cashier">Cashier</option>
+                                    <option value="Baker">Baker</option>
+                                    <option value="Cleaner">Cleaner</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="searchQuery">Search Staff</label>
+                                <input type="text" id="searchQuery" onkeyup="filterStaff()" placeholder="Search by name, email, or ID...">
+                            </div>
+                        </div>
+
+                        <!-- Staff Table -->
+                        <div id="staffTableContainer">
+                            <div class="loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>Loading staff members...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Modal -->
+    <div id="staffModal" class="modal-overlay" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Add New Staff Member</h3>
+                <button class="modal-close" onclick="closeStaffModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="staffForm" onsubmit="handleStaffSubmit(event)">
+                    <div id="modalError" class="error-message" style="display: none;"></div>
+
+                    <div class="form-group">
+                        <label for="staffRole">Role *</label>
+                        <select id="staffRole" name="role" required>
+                            <option value="">Select a role</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Barista">Barista</option>
+                            <option value="Cashier">Cashier</option>
+                            <option value="Baker">Baker</option>
+                            <option value="Cleaner">Cleaner</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="staffFirstName">First Name *</label>
+                            <input type="text" id="staffFirstName" name="firstName" required placeholder="Enter first name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="staffLastName">Last Name *</label>
+                            <input type="text" id="staffLastName" name="lastName" required placeholder="Enter last name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="staffEmail">Email Address *</label>
+                        <input type="email" id="staffEmail" name="email" required placeholder="Enter email address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="staffPhone">Phone Number *</label>
+                        <input type="tel" id="staffPhone" name="phone" required placeholder="Enter phone number">
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="btn primary" id="staffSubmitBtn">
+                            <i class="fas fa-plus"></i> Create Staff
+                        </button>
+                        <button type="button" class="btn secondary" onclick="closeStaffModal()">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

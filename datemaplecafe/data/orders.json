@@ -1,0 +1,451 @@
+[
+  {
+    "id": "test123",
+    "cart": {
+      "total": 10.5
+    },
+    "customerInfo": {
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "test@example.com",
+      "phone": "123-456-7890"
+    },
+    "status": "pending",
+    "timestamp": "2025-09-27T19:33:54.114Z"
+  },
+  {
+    "id": "1759002130496",
+    "customerInfo": {
+      "firstName": "Saleem",
+      "lastName": "Mohamed",
+      "email": "slm.mohamed@gmail.com",
+      "phone": "215-201-6423"
+    },
+    "cart": {
+      "items": [
+        {
+          "uniqueId": "original-matcha-Lactose Free Milk-None",
+          "itemId": "original-matcha",
+          "name": "Original Matcha",
+          "basePrice": 5.5,
+          "finalPrice": 5.5,
+          "options": {
+            "milk": "Lactose Free Milk",
+            "sweetener": "None"
+          },
+          "quantity": 1
+        },
+        {
+          "uniqueId": "original-latte-Lactose Free Milk-None",
+          "itemId": "original-latte",
+          "name": "Original Latte",
+          "basePrice": 5.5,
+          "finalPrice": 5.5,
+          "options": {
+            "milk": "Lactose Free Milk",
+            "sweetener": "None"
+          },
+          "quantity": 1
+        }
+      ],
+      "subtotal": 11,
+      "tax": 0.9624999999999999,
+      "total": 11.9625,
+      "pickupTime": "1PM"
+    },
+    "paymentMethod": "cash",
+    "specialInstructions": "",
+    "status": "pending",
+    "timestamp": "2025-09-27T19:42:11.140Z"
+  },
+  {
+    "id": "1759003642646",
+    "customerInfo": {
+      "firstName": "Ahmed",
+      "lastName": "Hacen",
+      "email": "jarrassoul@hotmail.com",
+      "phone": "215-201-4258"
+    },
+    "cart": {
+      "items": [
+        {
+          "uniqueId": "original-matcha-Lactose Free Milk-None",
+          "itemId": "original-matcha",
+          "name": "Original Matcha",
+          "basePrice": 5.5,
+          "finalPrice": 5.5,
+          "options": {
+            "milk": "Lactose Free Milk",
+            "sweetener": "None"
+          },
+          "quantity": 1
+        },
+        {
+          "uniqueId": "horchata-matcha-None",
+          "itemId": "horchata-matcha",
+          "name": "Horchata Matcha",
+          "basePrice": 7,
+          "finalPrice": 7,
+          "options": {
+            "addons": "None"
+          },
+          "quantity": 1
+        },
+        {
+          "uniqueId": "strawberry-muffin-",
+          "itemId": "strawberry-muffin",
+          "name": "Strawberries & Cream Muffin",
+          "basePrice": 5,
+          "finalPrice": 5,
+          "options": {},
+          "quantity": 1
+        }
+      ],
+      "subtotal": 17.5,
+      "tax": 1.53125,
+      "total": 19.03125,
+      "pickupTime": "1:30PM"
+    },
+    "paymentMethod": "cash",
+    "specialInstructions": "",
+    "status": "pending",
+    "timestamp": "2025-09-27T20:07:23.298Z"
+  },
+  {
+    "id": "1759376992570",
+    "customerInfo": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "(555) 123-4567"
+    },
+    "cart": {
+      "items": [
+        {
+          "name": "Cappuccino",
+          "quantity": 2,
+          "basePrice": 4.5,
+          "finalPrice": 4.5,
+          "options": {
+            "Size": "Large",
+            "Milk": "Oat Milk"
+          }
+        },
+        {
+          "name": "Blueberry Muffin",
+          "quantity": 1,
+          "basePrice": 3.25,
+          "finalPrice": 3.25,
+          "options": {}
+        }
+      ],
+      "subtotal": 12.25,
+      "tax": 1.23,
+      "total": 13.48,
+      "pickupTime": "ASAP"
+    },
+    "paymentMethod": "card",
+    "specialInstructions": "Extra hot please",
+    "timestamp": "2025-10-02T03:49:52.570Z",
+    "status": "pending"
+  },
+  {
+    "id": "1759377011654",
+    "customerInfo": {
+      "firstName": "Sarah",
+      "lastName": "Smith",
+      "email": "sarah.smith@example.com",
+      "phone": "(555) 987-6543"
+    },
+    "cart": {
+      "items": [
+        {
+          "name": "Latte",
+          "quantity": 1,
+          "basePrice": 5,
+          "finalPrice": 5,
+          "options": {
+            "Size": "Medium",
+            "Syrup": "Vanilla"
+          }
+        }
+      ],
+      "subtotal": 5,
+      "tax": 0.5,
+      "total": 5.5,
+      "pickupTime": "10:30 AM"
+    },
+    "paymentMethod": "cash",
+    "specialInstructions": "",
+    "timestamp": "2025-10-02T03:50:11.654Z",
+    "status": "pending"
+  },
+  {
+    "id": "1759377904743",
+    "customerInfo": {
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "email": "alice.johnson@example.com",
+      "phone": "(555) 111-2222"
+    },
+    "cart": {
+      "items": [
+        {
+          "name": "Espresso",
+          "quantity": 2,
+          "basePrice": 3,
+          "finalPrice": 3,
+          "options": {
+            "Size": "Double Shot"
+          }
+        },
+        {
+          "name": "Croissant",
+          "quantity": 1,
+          "basePrice": 4,
+          "finalPrice": 4,
+          "options": {}
+        }
+      ],
+      "subtotal": 10,
+      "tax": 0.88,
+      "total": 10.88,
+      "pickupTime": "11:00 AM"
+    },
+    "paymentMethod": "card",
+    "specialInstructions": "Make it extra strong please!",
+    "timestamp": "2025-10-02T04:05:04.744Z",
+    "status": "pending",
+    "emailSent": true,
+    "emailMessageId": "<fa32f0dd-36b7-0aa2-c99b-f669d7186414@datemaplecafe.com>"
+  },
+  {
+    "id": "1759378109111",
+    "customerInfo": {
+      "firstName": "Ahmed",
+      "lastName": "Jar Rassoul",
+      "email": "jarrassoul@hotmail.com",
+      "phone": "2152017364"
+    },
+    "cart": {
+      "items": [
+        {
+          "uniqueId": "black-sesame-latte-Lactose Free Milk-None",
+          "itemId": "black-sesame-latte",
+          "name": "Black Sesame Latte",
+          "basePrice": 7,
+          "finalPrice": 7,
+          "options": {
+            "milk": "Lactose Free Milk",
+            "addons": "None"
+          },
+          "quantity": 2
+        },
+        {
+          "uniqueId": "spanish-latte-As is! - Condensed Milk, Lactose Free Milk-None",
+          "itemId": "spanish-latte",
+          "name": "Spanish Latte",
+          "basePrice": 7,
+          "finalPrice": 7,
+          "options": {
+            "version": "As is! - Condensed Milk, Lactose Free Milk",
+            "addons": "None"
+          },
+          "quantity": 1
+        }
+      ],
+      "subtotal": 21,
+      "tax": 1.8375,
+      "total": 22.8375,
+      "pickupTime": "12:15PM"
+    },
+    "paymentMethod": "cash",
+    "specialInstructions": "",
+    "status": "pending",
+    "timestamp": "2025-10-02T04:08:31.192Z",
+    "emailSent": true,
+    "emailMessageId": "<a8eadc7d-e556-1ef3-a1e2-40284e8f26aa@datemaplecafe.com>"
+  },
+  {
+    "id": "1759378702607",
+    "customerInfo": {
+      "firstName": "Ahmed",
+      "lastName": "Jar Rassoul",
+      "email": "jarrassoul@hotmail.com",
+      "phone": "2152017364"
+    },
+    "cart": {
+      "items": [
+        {
+          "uniqueId": "bread-pudding-",
+          "itemId": "bread-pudding",
+          "name": "Warm Bread Pudding",
+          "basePrice": 7,
+          "finalPrice": 7,
+          "options": {},
+          "quantity": 1
+        },
+        {
+          "uniqueId": "veggie-frittata-W/ Side Salad",
+          "itemId": "veggie-frittata",
+          "name": "Veggie Frittata",
+          "basePrice": 9,
+          "finalPrice": 9,
+          "options": {
+            "addons": "W/ Side Salad"
+          },
+          "quantity": 1
+        }
+      ],
+      "subtotal": 16,
+      "tax": 1.4,
+      "total": 17.4,
+      "pickupTime": "1PM"
+    },
+    "paymentMethod": "cash",
+    "specialInstructions": "",
+    "status": "pending",
+    "timestamp": "2025-10-02T04:18:24.817Z",
+    "emailSent": false,
+    "emailError": "Email authentication failed - please check email credentials"
+  },
+  {
+    "id": "1759379220873",
+    "customerInfo": {
+      "firstName": "Ahmed",
+      "lastName": "Jar Rassoul",
+      "email": "jarrassoul@hotmail.com",
+      "phone": "2152017364"
+    },
+    "cart": {
+      "items": [
+        {
+          "uniqueId": "veggie-frittata-W/ Side Salad",
+          "itemId": "veggie-frittata",
+          "name": "Veggie Frittata",
+          "basePrice": 9,
+          "finalPrice": 9,
+          "options": {
+            "addons": "W/ Side Salad"
+          },
+          "quantity": 1
+        },
+        {
+          "uniqueId": "bec-sandwich-White Italian Roll-Regular",
+          "itemId": "bec-sandwich",
+          "name": "B.E.C",
+          "basePrice": 7,
+          "finalPrice": 7,
+          "options": {
+            "roll-type": "White Italian Roll",
+            "style": "Regular"
+          },
+          "quantity": 1
+        }
+      ],
+      "subtotal": 16,
+      "tax": 1.4,
+      "total": 17.4,
+      "pickupTime": "12:30PM"
+    },
+    "paymentMethod": "cash",
+    "specialInstructions": "",
+    "status": "pending",
+    "timestamp": "2025-10-02T04:27:03.029Z",
+    "emailSent": false,
+    "emailError": "Email authentication failed - please check email credentials"
+  },
+  {
+    "id": "1759379400064",
+    "customerInfo": {
+      "firstName": "Ahmed",
+      "lastName": "Rassoul",
+      "email": "jj3269@drexel.edu",
+      "phone": "2152017364"
+    },
+    "cart": {
+      "items": [
+        {
+          "uniqueId": "original-matcha-Lactose Free Milk-None",
+          "itemId": "original-matcha",
+          "name": "Original Matcha",
+          "basePrice": 5.5,
+          "finalPrice": 5.5,
+          "options": {
+            "milk": "Lactose Free Milk",
+            "sweetener": "None"
+          },
+          "quantity": 1
+        },
+        {
+          "uniqueId": "bec-sandwich-White Italian Roll-Regular",
+          "itemId": "bec-sandwich",
+          "name": "B.E.C",
+          "basePrice": 7,
+          "finalPrice": 7,
+          "options": {
+            "roll-type": "White Italian Roll",
+            "style": "Regular"
+          },
+          "quantity": 1
+        }
+      ],
+      "subtotal": 12.5,
+      "tax": 1.09375,
+      "total": 13.59375,
+      "pickupTime": "12:15PM"
+    },
+    "paymentMethod": "cash",
+    "specialInstructions": "",
+    "status": "pending",
+    "timestamp": "2025-10-02T04:30:02.212Z",
+    "emailSent": false,
+    "emailError": "Email authentication failed - please check email credentials"
+  },
+  {
+    "id": "1759379438809",
+    "customerInfo": {
+      "firstName": "Ahmed",
+      "lastName": "Rassoul",
+      "email": "jarrassoul@hotmail.com",
+      "phone": "2152017364"
+    },
+    "cart": {
+      "items": [
+        {
+          "uniqueId": "bec-sandwich-White Italian Roll-Regular",
+          "itemId": "bec-sandwich",
+          "name": "B.E.C",
+          "basePrice": 7,
+          "finalPrice": 7,
+          "options": {
+            "roll-type": "White Italian Roll",
+            "style": "Regular"
+          },
+          "quantity": 1
+        },
+        {
+          "uniqueId": "veggie-frittata-W/ Side Salad",
+          "itemId": "veggie-frittata",
+          "name": "Veggie Frittata",
+          "basePrice": 9,
+          "finalPrice": 9,
+          "options": {
+            "addons": "W/ Side Salad"
+          },
+          "quantity": 1
+        }
+      ],
+      "subtotal": 16,
+      "tax": 1.4,
+      "total": 17.4,
+      "pickupTime": "12:15PM"
+    },
+    "paymentMethod": "cash",
+    "specialInstructions": "",
+    "status": "pending",
+    "timestamp": "2025-10-02T04:30:40.953Z",
+    "emailSent": false,
+    "emailError": "Email authentication failed - please check email credentials"
+  }
+]

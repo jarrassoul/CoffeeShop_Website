@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1761882849745,
+    "staff_id": "MA001",
+    "role": "Manager",
+    "first_name": "Ahmed",
+    "last_name": "JarRassoul",
+    "username": "ajarrassoul",
+    "email": "jarrassoul@datemaplecafe.com",
+    "phone": "(215)-201-74126",
+    "password_hash": "77b33e68a9074848ca63889eeae2fd1a342fe5124c78163c6999a08830ba79c980d857596540bb4df07ac28f17c0e217a24334f1285aeb23bed3ed3e117dcd77",
+    "password_salt": "6bff89f92fa94d74485c947138b26b13f0165ad53fe357e53976588d72d98ae7",
+    "password_set": true,
+    "hire_date": "2025-10-31T03:54:09.745Z",
+    "updated_date": "2025-10-31T04:21:59.459Z"
+  },
+  {
+    "id": 1761883343752,
+    "staff_id": "MA002",
+    "role": "Manager",
+    "first_name": "Jamilah",
+    "last_name": "Abdullah",
+    "username": "jamilahabdullah",
+    "email": "j.abdu@datemaple.com",
+    "phone": "(215)-201-3652",
+    "password_hash": "7ad6521124a45397526596182b84b83b4715b630a0f8db47494dcb5c9309f16296c2cce2427290f3afd658a5d5ae966b69d16330ac7505d8b9e4dec3daac0e66",
+    "password_salt": "c50ead1c03f2d01631926544e326e8240229421d8573dc1152b8a8becd1af44a",
+    "password_set": true,
+    "hire_date": "2025-10-31T04:02:23.752Z",
+    "updated_date": "2025-10-31T04:11:04.703Z"
+  }
+]
